@@ -1,6 +1,7 @@
+import {Link} from 'react-router-dom';
 const MenuItem=({url,value})=>{
     return (
-        <a href={url}>{value}</a>
+        <Link to={url}>{value}</Link>
     )
 }
 export default MenuItem;
