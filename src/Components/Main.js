@@ -6,6 +6,8 @@ import Post from './Post';
 import {BrowserRouter,Routes,Route} from 'react-router-dom';
 import CreateStudent from './CreateStudent';
 import StudentList from './StudentList';
+import StudentDetails from './StudentDetails';
+import FileUpload from './FileUpload';
 const Main = ()=>{
     return (
         <div>
@@ -18,6 +20,8 @@ const Main = ()=>{
                     <Route path="/post" element={<Post/>} />
                     <Route path="/student" element={<CreateStudent/>} />
                     <Route path="/list" element={<StudentList/>} />
+                    <Route path="/student/details/:id" element={<StudentDetails/>} />
+                    <Route path="/upload" element={<FileUpload/>} />
                 </Routes>
             </BrowserRouter>
             

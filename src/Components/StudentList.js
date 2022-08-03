@@ -1,9 +1,18 @@
-import {useState} from 'react';
-import axios from 'axios';
+import {useState,useEffect} from 'react';
+import axiosConfig from './axiosConfig';
+import {Link} from 'react-router-dom';
 const StudentList=()=>{
     const[students,setStudents] = useState([]);
+    useEffect(()=>{
+        axiosConfig.get("student/get").then((rsp)=>{
+        setStudents(rsp.data);
+        },(er)=>{
+
+        })
+
+    },[]);
     const loadData=()=>{
-        axios.get("http://localhost:8000/api/student/get").then((rsp)=>{
+        axiosConfig.get("student/get").then((rsp)=>{
             setStudents(rsp.data);
         },(er)=>{
 
@@ -15,7 +24,7 @@ const StudentList=()=>{
             <ul>
                 {
                     students.map((st)=>
-                    <li>{st.name}</li>
+                    <li key={st.id}><Link to={`/student/details/${st.id}`}>{st.name}</Link></li>
                     )
                 }
             </ul>
